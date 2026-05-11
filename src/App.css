@@ -85,3 +85,83 @@
 .hero-btn:hover {
   background: #a0522d;
 }
+
+.featured {
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.featured h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #2c2c2c;
+}
+
+.featured h2 em {
+  font-style: italic;
+  color: #a0522d;
+}
+
+.flower-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.flower-card {
+  background: #fff;
+  border: 1px solid #e8e0d8;
+  padding: 2rem 1.5rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.flower-emoji {
+  font-size: 2.5rem;
+}
+
+.flower-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #a0522d;
+}
+
+.flower-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #2c2c2c;
+  text-align: center;
+}
+
+.flower-price {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+}
+
+.flower-price span {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 400;
+}
+
+.add-btn {
+  margin-top: 0.5rem;
+  background: none;
+  border: 1px solid #2c2c2c;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  background: #2c2c2c;
+  color: #fff;
+}

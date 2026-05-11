@@ -27,11 +27,37 @@ function Hero() {
   )
 }
 
+const featured = [
+  { emoji: '🌹', name: 'Juliet Garden Rose', price: '₹480', tag: 'Classic' },
+  { emoji: '🌸', name: 'Sakura Blossom', price: '₹320', tag: 'Seasonal' },
+  { emoji: '🌻', name: 'Sunflower', price: '₹210', tag: 'Seasonal' },
+]
+
+function FeaturedFlowers() {
+  return (
+    <section className="featured">
+      <h2>Featured <em>Blooms</em></h2>
+      <div className="flower-cards">
+        {featured.map((flower) => (
+          <div className="flower-card" key={flower.name}>
+            <div className="flower-emoji">{flower.emoji}</div>
+            <span className="flower-tag">{flower.tag}</span>
+            <div className="flower-name">{flower.name}</div>
+            <div className="flower-price">{flower.price} <span>per stem</span></div>
+            <button className="add-btn">Add to cart →</button>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
+      <FeaturedFlowers />
     </>
   )
 }
