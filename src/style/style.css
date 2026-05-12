@@ -595,6 +595,22 @@ footer .logo { font-size: 1.4rem; }
 
 .add-btn:hover { background: var(--coral); transform: scale(1.04); }
 
+.add-btn.btn-added {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.add-btn.btn-added:hover {
+  background: #e05555;
+  border-color: #e05555;
+}
+
+.add-btn.btn-added:hover::after {
+  content: ' — click to remove';
+  font-size: 0.75rem;
+}
+
 /* EMPTY STATE */
 .empty-state {
   display: none;

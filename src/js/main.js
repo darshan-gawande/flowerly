@@ -22,6 +22,16 @@ function addToCart(name, price) {
 }
 
 /**
+ * Remove an item from the cart entirely.
+ * @param {string} name
+ */
+function removeFromCart(name) {
+  const index = cart.findIndex(item => item.name === name);
+  if (index !== -1) cart.splice(index, 1);
+  updateCartUI();
+}
+
+/**
  * Update the navbar cart counter badge.
  */
 function updateCartUI() {

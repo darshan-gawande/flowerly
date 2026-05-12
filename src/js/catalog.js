@@ -51,24 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---- ADD TO CART ---- */
+  const addedItems = new Set();
+
   document.querySelectorAll('.add-btn').forEach(btn => {
     btn.addEventListener('click', e => {
-      e.stopPropagation(); // prevent row click from triggering
+      e.stopPropagation();
 
       const name  = btn.dataset.name;
       const price = parseInt(btn.dataset.price, 10);
 
-      addToCart(name, price); // defined in main.js
-
-      // Visual feedback
-      const original = btn.textContent;
-      btn.textContent     = 'Added ✓';
-      btn.style.background = 'var(--green)';
-
-      setTimeout(() => {
-        btn.textContent     = original;
-        btn.style.background = '';
-      }, 1500);
+      if (addedItems.has(name)) {
+        // Remove from cart
+        addedItems.delete(name);
+        removeFromCart(name);
+        btn.textContent = 'Add to cart →';
+        btn.classList.remove('btn-added');
+      } else {
+        // Add to cart
+        addedItems.add(name);
+        addToCart(name, price);
+        btn.textContent = 'Added ✓';
+        btn.classList.add('btn-added');
+      }
     });
   });
 
