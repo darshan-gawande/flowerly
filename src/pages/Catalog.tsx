@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { flowers } from '../data/flowers'
@@ -20,6 +20,7 @@ export default function Catalog() {
   const [searchParams] = useSearchParams()
   const [activeFilter, setActiveFilter] = useState<Filter>('all')
   const { addToCart, removeFromCart, isInCart } = useCart()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const param = searchParams.get('filter') as Filter | null
@@ -56,7 +57,12 @@ export default function Catalog() {
         {visible.map(flower => {
           const added = isInCart(flower.name)
           return (
-            <div className="flower-row" key={flower.id}>
+            <div
+              className="flower-row"
+              key={flower.id}
+              onClick={() => navigate(`/flower/${flower.id}`)}
+              style={{ cursor: 'pointer' }}
+            >
               <div className={`flower-emoji-box ${flower.colorClass}`}>{flower.emoji}</div>
               <div className="flower-body">
                 <div className="flower-meta">
@@ -70,7 +76,10 @@ export default function Catalog() {
                 <div className="flower-price">₹{flower.price}<span>{flower.unit}</span></div>
                 <button
                   className={`add-btn${added ? ' btn-added' : ''}`}
-                  onClick={() => added ? removeFromCart(flower.name) : addToCart(flower.name, flower.price)}
+                  onClick={e => {
+                    e.stopPropagation()
+                    added ? removeFromCart(flower.name) : addToCart(flower.name, flower.price)
+                  }}
                 >
                   {added ? 'Added ✓' : 'Add to cart →'}
                 </button>

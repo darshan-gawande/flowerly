@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 export default function Navbar() {
-  const { totalQty } = useCart()
+  const { totalQty, openCart } = useCart()
   const { pathname } = useLocation()
 
   return (
@@ -13,7 +13,11 @@ export default function Navbar() {
         <li><Link to="/catalog" className={pathname === '/catalog' ? 'active' : ''}>Collections</Link></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#" className="nav-cta">Cart ({totalQty})</a></li>
+        <li>
+          <button className="nav-cta" onClick={openCart}>
+            Cart ({totalQty})
+          </button>
+        </li>
       </ul>
     </nav>
   )
